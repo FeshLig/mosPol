@@ -75,6 +75,7 @@ int main() {
 		cout << rand << endl;
 		cout << i << endl;
 	}
+    cin >> rand;
 }
 
 int foo(int a) {
