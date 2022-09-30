@@ -17,6 +17,7 @@ int main() {
     *a = 2.2;
     cout << *a << ' ' << a << endl;
     delete a;
+    cin >> arr[1];
 }
 
 int arr_sum(int *start, int *end) {
