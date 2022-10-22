@@ -1,4 +1,6 @@
 #include "weapon.h"
+#include "magic_weapon.h"
+#include "characteristic.h"
 
 struct Player {
     int id;
@@ -19,9 +21,9 @@ int main() {
         cout << "Onehanded weapon" << endl;
     else if (pistol.getWeaponType() == TWOHANDED)
         cout << "Twohanded weapon" << endl;
-     else if (pistol.getWeaponType() == BOW)
+    else if (pistol.getWeaponType() == BOW)
         cout << "Bow weapon" << endl;
-     else if (pistol.getWeaponType() == CROSSBOW)
+    else if (pistol.getWeaponType() == CROSSBOW)
         cout << "Crossbow weapon" << endl;
 
     Player player1 = {01, "Abobus", "qwerty"};
