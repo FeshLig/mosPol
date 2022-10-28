@@ -13,7 +13,6 @@ class Errors {
         ZERO_LESSER,
         DEFAULT
         };
-
 };
 
 #endif  //  ERRORS_H_
