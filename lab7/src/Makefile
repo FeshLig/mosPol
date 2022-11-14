@@ -1,4 +1,4 @@
-all: task1 task2
+all: task1 task2 task3 task4
 
 task1: task1.o
 	g++ -Wall -Werror -Wextra task1.o -o ..\build\task1
@@ -20,6 +20,16 @@ task3: task3.o
 
 task3.o: task3.cpp
 	g++ -c task3.cpp
+
+task4: task4.o
+	g++ -Wall -Werror -Wextra task4.o -o ..\build\task4
+	nmake clean
+
+task4.o: task4.cpp
+	g++ -c task4.cpp
+
+settings.o: settings.cpp
+	g++ -c settings.cpp
 
 clean:
 	DEL *.ilk *.obj *.pdb vc140.pdb *.exe *.o
