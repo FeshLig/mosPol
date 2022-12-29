@@ -2,19 +2,24 @@
 #define TREE_H_
 
 #include <iostream>
+#include <math.h>
 #include "node.h"
 
 class Tree {
-    private:
+    protected:
         Node *root;
         void print(Node *node);
         void destroy(Node *root);
         Node* find(int data, Node *node);
+        void heightFix(Node* p);
+        void coordinateDefenition(Node *node, int side, int ( &field )[20][100], int difference, int xCoord);
+        void tellFix(Node *node);
     public:
+        int height(Node* p);
         Tree(int data);
         ~Tree();
 
-        void add(int data);
+        Node* add(int data);
         Node* find(int data);
         void print();
         void remove(int data);

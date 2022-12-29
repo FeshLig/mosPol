@@ -1,4 +1,7 @@
 #include "tree.h"
+#define LEFT 0
+#define RIGHT 1
+
 
 Tree::Tree(int data) {
     root = new Node(data);
@@ -8,7 +11,7 @@ Tree::~Tree() {
     destroy(root);
 }
 
-void Tree::add(int data) {
+Node* Tree::add(int data) {
     Node **trouble = &root;
     Node *parent;
     while (*trouble) {
@@ -20,11 +23,14 @@ void Tree::add(int data) {
             parent = *trouble;
             trouble = &node.right;
         } else {
-            return;
+            return nullptr;
         }
     }
     *trouble = new Node(data);
     (*trouble)->parent = parent;
+    //heightFix(*trouble);
+    tellFix(root);
+    return *trouble;
 }
 
 Node* Tree::find(int data) {
@@ -49,11 +55,43 @@ void Tree::print() {
 }
 
 void Tree::print(Node *node) {
-    if (node) {
-        print(node->left);
-        std::cout << node->data << " ";
-        print(node->right);
+    int nodeX = 50, nodeY = 2, difference = 25;
+    int field[20][100] = {-10000};
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 100; j++) {
+            field[i][j] = -10000;
+        }
     }
+
+    field[nodeY][nodeX] = node->data;
+    coordinateDefenition(node->left, LEFT, field, difference, nodeX);
+    coordinateDefenition(node->right, RIGHT, field, difference, nodeX);
+
+    for (int i = 0; i < 20; i++) {
+        for (int j = 0; j < 100; j++) {
+            if (field[i][j] != -10000) {
+                std::cout << field[i][j];
+            } else {
+                printf(" ");
+            }
+        }
+        std::cout << '\n';
+    }
+}
+
+void Tree::coordinateDefenition(Node *node, int side, int ( &field )[20][100], int difference, int xCoord) {
+    if (node) {
+        if (side == LEFT) {
+            xCoord -= difference;
+        } else {
+            xCoord += difference;
+        }
+        field[2 * (node->tell + 1)][xCoord] = node->data;
+        difference /= 2;
+        coordinateDefenition(node->left, LEFT, field, difference, xCoord);
+        coordinateDefenition(node->right, RIGHT, field, difference, xCoord);
+    }
+
 }
 
 void Tree::destroy(Node *node) {
@@ -123,5 +161,26 @@ void Tree::remove(int data) {
             }
         }
     }
+    tellFix(root);
+    heightFix(node);
 }
 
+int Tree::height(Node* p) {
+    return p ? p->height : 0;
+}
+
+void Tree::tellFix(Node *node) {
+    if (node) {
+        if (node->parent != nullptr) {
+            node->tell = node->parent->tell + 1;
+        }
+        tellFix(node->left);
+        tellFix(node->right);
+    }
+}
+
+void Tree::heightFix(Node* node) {
+    int leftHeight = height(node->left);
+	int rightHeight = height(node->right);
+	node->height = ((leftHeight > rightHeight) ? leftHeight : rightHeight) + 1;
+}

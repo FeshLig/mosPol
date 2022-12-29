@@ -3,6 +3,8 @@
 
 typedef struct Node {
     int data;
+    int height;
+    int tell;
     struct Node *left;
     struct Node *right;
     struct Node *parent;
@@ -11,6 +13,8 @@ typedef struct Node {
         left = nullptr;
         right = nullptr;
         parent = nullptr;
+        height = 1;
+        tell = 1;
     }
 } Node;
 
