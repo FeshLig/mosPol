@@ -46,6 +46,10 @@ Node* AVL_Tree::balance(Node* node) {
 		return rightRotate(node);
 		std::cout << "Left Rotate";
 	}
+	if (root->parent != nullptr) {
+		root = root->parent;
+		root->tell = 1;
+	}
 	return node;
 }
 

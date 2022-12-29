@@ -14,8 +14,8 @@ class Tree {
         void heightFix(Node* p);
         void coordinateDefenition(Node *node, int side, int ( &field )[20][100], int difference, int xCoord);
         void tellFix(Node *node);
-    public:
         int height(Node* p);
+    public:
         Tree(int data);
         ~Tree();
 
