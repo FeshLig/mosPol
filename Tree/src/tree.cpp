@@ -67,6 +67,8 @@ void Tree::print(Node *node) {
     coordinateDefenition(node->right, RIGHT, field, difference, nodeX);
 
     for (int i = 0; i < 20; i++) {
+        if (i % 2 == 0 && i != 0)
+            std::cout << (i / 2) << ":\t";
         for (int j = 0; j < 100; j++) {
             if (field[i][j] != -10000) {
                 std::cout << field[i][j];
@@ -164,8 +166,8 @@ void Tree::remove(int data) {
     heightFix(node);
 }
 
-int Tree::height(Node* p) {
-    return p ? p->height : 0;
+int Tree::height(Node* node) {
+    return node ? node->height : 0;
 }
 
 void Tree::tellFix(Node *node) {

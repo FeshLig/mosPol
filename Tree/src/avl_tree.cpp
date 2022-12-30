@@ -2,8 +2,8 @@
 
 AVL_Tree::AVL_Tree(int data) : Tree::Tree(data) {}
 
-int AVL_Tree::balanceFactor(Node* p) {
-	return height(p->right)-height(p->left);
+int AVL_Tree::balanceFactor(Node* node) {
+	return height(node->right)-height(node->left);
 }
 
 Node* AVL_Tree::rightRotate(Node *node) {
@@ -74,8 +74,8 @@ Node* AVL_Tree::add(int value) {
 	return newNode;
 }
 
-Node* AVL_Tree::findmin(Node* p) {
-	return p->left ? findmin(p->left) : p;
+Node* AVL_Tree::findmin(Node* node) {
+	return node->left ? findmin(node->left) : node;
 }
 
 Node* AVL_Tree::removemin(Node* node) {
