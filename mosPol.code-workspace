@@ -47,7 +47,18 @@
 			"xstddef": "cpp",
 			"xstring": "cpp",
 			"xtr1common": "cpp",
-			"xutility": "cpp"
+			"xutility": "cpp",
+			"algorithm": "cpp",
+			"map": "cpp",
+			"string": "cpp",
+			"vector": "cpp",
+			"locale": "cpp",
+			"regex": "cpp",
+			"xlocbuf": "cpp",
+			"xlocmes": "cpp",
+			"xlocmon": "cpp",
+			"xloctime": "cpp",
+			"xtree": "cpp"
 		}
 	}
 }

@@ -28,7 +28,6 @@ Node* Tree::add(int data) {
     }
     *trouble = new Node(data);
     (*trouble)->parent = parent;
-    //heightFix(*trouble);
     tellFix(root);
     return *trouble;
 }
@@ -86,7 +85,7 @@ void Tree::coordinateDefenition(Node *node, int side, int ( &field )[20][100], i
         } else {
             xCoord += difference;
         }
-        field[2 * (node->tell + 1)][xCoord] = node->data;
+        field[2 * (node->tell)][xCoord] = node->data;
         difference /= 2;
         coordinateDefenition(node->left, LEFT, field, difference, xCoord);
         coordinateDefenition(node->right, RIGHT, field, difference, xCoord);

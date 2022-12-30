@@ -11,13 +11,16 @@ class AVL_Tree : public Tree {
         Node* rightRotate(Node *node);
         Node* leftRotate(Node *node);
         Node* balance(Node* node);
-
+        Node* remove(Node* node, int data);
+        Node* add(Node *node, Node *parent, int value);
+        Node* parentFix(Node *node, Node *parent);
+        Node* findmin(Node* p);
+        Node* removemin(Node* p);
 
     public:
         AVL_Tree(int data);
-        Node* add(Node *node, Node *parent, int value);
-        // Node* add(int value) {return 0;}
         Node* add(int value);
+        Node* remove(int data);
 };
 
 #endif  //  AVL_TREE_H_
